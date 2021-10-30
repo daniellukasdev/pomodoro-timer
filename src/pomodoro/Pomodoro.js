@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-//import classNames from "../utils/class-names";
 import useInterval from "../utils/useInterval";
 import { minutesToDuration } from "../utils/duration"
 import Session from "./Session"
-import StopBtn from "./StopBtn"
-import PlayPauseBtn from "./PlayPauseBtn";
+import TimerControls from "./TimerControls";
 import IncreaseDecreaseBtn from "./IncreaseDecreaseBtn";
 
 
@@ -164,18 +162,7 @@ function Pomodoro() {
           </div>
         </div>
       </div>
-      <div className="row">
-        <div className="col">
-          <div
-            className="btn-group btn-group-lg mb-2"
-            role="group"
-            aria-label="Timer controls"
-          >
-            <PlayPauseBtn playPause={playPause} isTimerRunning={isTimerRunning} />
-            <StopBtn session={session} handleStop={handleStop} />
-          </div>
-        </div>
-      </div>
+      <TimerControls playPause={playPause} session={session} isTimerRunning={isTimerRunning} handleStop={handleStop} />
       <Session session={session} currentDuration={session?.label === "Focusing" ? focusDuration : breakDuration} />
     </div>
   );
