@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import useInterval from "../utils/useInterval";
-// import { minutesToDuration } from "../utils/duration"
 import Session from "./Session"
 import Duration from "./Duration";
 import TimerControls from "./TimerControls";
-// import IncreaseDecreaseBtn from "./IncreaseDecreaseBtn";
 
-
+// object created to store initial state key-value pairs
 const INITIAL_STATE = {
   isTimerRunning: false,
   session: null,
@@ -105,26 +103,6 @@ function Pomodoro() {
     });
   }
 
-  function handleDecreaseFocus() {
-    if (focusDuration === 5) return;
-    setFocusDuration(state => state - 5);
-  }
-
-  function handleIncreaseFocus() {
-    if (focusDuration === 60) return;
-    setFocusDuration(state => state + 5);
-  }
-
-  function handleDecreaseBreak() {
-    if (breakDuration === 1) return;
-    setBreakDuration(state => state - 1)
-  }
-
-  function handleIncreaseBreak() {
-    if (breakDuration === 15) return;
-    setBreakDuration(state => state + 1)
-  }
-
   function handleStop() {
     setIsTimerRunning(INITIAL_STATE.isTimerRunning);
     setSession(INITIAL_STATE.session);
@@ -135,11 +113,10 @@ function Pomodoro() {
       <Duration 
       session={session} 
       focusDuration={focusDuration} 
+      setFocusDuration={setFocusDuration}
       breakDuration={breakDuration} 
-      handleDecreaseFocus={handleDecreaseFocus} 
-      handleDecreaseBreak={handleDecreaseBreak} 
-      handleIncreaseFocus={handleIncreaseFocus} 
-      handleIncreaseBreak={handleIncreaseBreak} />
+      setBreakDuration={setBreakDuration}
+       />
       <TimerControls 
       playPause={playPause} 
       session={session} 
