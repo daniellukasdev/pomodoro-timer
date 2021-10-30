@@ -1,7 +1,7 @@
 import React from "react";
 import { minutesToDuration, secondsToDuration } from "../utils/duration"
 
-export default function Session({ session, currentDuration }) {
+export default function Session({ session, currentDuration, isPaused }) {
     if (!session) return null;
     // calculates what percent of currentDuration in seconds that the time remaining is
     // then is subtracted from 100 to get the difference
@@ -20,6 +20,10 @@ export default function Session({ session, currentDuration }) {
             <p className="lead" data-testid="session-sub-title">
             {secondsToDuration(session?.timeRemaining)} remaining
             </p>
+            {/* Renders when paused */}
+            <h3>
+              {isPaused ? "PAUSED" : ""}
+              </h3>
           </div>
         </div>
         <div className="row mb-2">

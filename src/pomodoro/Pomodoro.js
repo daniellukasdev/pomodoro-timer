@@ -61,9 +61,14 @@ function Pomodoro() {
   // The current session - null where there is no session running
   const [session, setSession] = useState(null);
 
+  // creates state for session paused
+  const [isPaused, setIsPaused] = useState(false);
+
   // ToDo: Allow the user to adjust the focus and break duration.
   const [focusDuration, setFocusDuration] = useState(25);
   const [breakDuration, setBreakDuration] = useState(5);
+  
+  
 
   /**
    * Custom hook that invokes the callback function every second
@@ -94,10 +99,14 @@ function Pomodoro() {
             return {
               label: "Focusing",
               timeRemaining: focusDuration * 60,
+              isPaused: isPaused,
             };
           }
+          setIsPaused(state => state = false);
           return prevStateSession;
         });
+      } else {
+        setIsPaused(state => state = true);
       }
       return nextState;
     });
@@ -116,7 +125,7 @@ function Pomodoro() {
       setFocusDuration={setFocusDuration}
       breakDuration={breakDuration} 
       setBreakDuration={setBreakDuration}
-       />
+      />
       <TimerControls 
       playPause={playPause} 
       session={session} 
@@ -124,7 +133,9 @@ function Pomodoro() {
       handleStop={handleStop} />
       <Session 
       session={session} 
-      currentDuration={session?.label === "Focusing" ? focusDuration : breakDuration} />
+      currentDuration={session?.label === "Focusing" ? focusDuration : breakDuration}
+      isPaused={isPaused ? isPaused : null} 
+      />
     </div>
   );
 }
