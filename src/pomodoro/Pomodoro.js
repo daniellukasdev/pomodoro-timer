@@ -5,6 +5,7 @@ import { minutesToDuration } from "../utils/duration"
 import Session from "./Session"
 import StopBtn from "./StopBtn"
 import PlayPauseBtn from "./PlayPauseBtn";
+import IncreaseDecreaseBtn from "./IncreaseDecreaseBtn";
 
 
 const INITIAL_STATE = {
@@ -140,26 +141,9 @@ function Pomodoro() {
               Focus Duration: {minutesToDuration(focusDuration)}
             </span>
             <div className="input-group-append">
-              {/* TODO: Implement decreasing focus duration and disable during a focus or break session */}
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-testid="decrease-focus"
-                onClick={handleDecreaseFocus}
-                disabled={session}
-              >
-                <span className="oi oi-minus" />
-              </button>
+              <IncreaseDecreaseBtn dataTestID={"decrease-focus"} handleIncreaseDecrease={handleDecreaseFocus} disabled={session} className={"oi oi-minus"} />
               {/* TODO: Implement increasing focus duration  and disable during a focus or break session */}
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-testid="increase-focus"
-                onClick={handleIncreaseFocus}
-                disabled={session}
-              >
-                <span className="oi oi-plus" />
-              </button>
+              <IncreaseDecreaseBtn dataTestID={"increase-focus"} handleIncreaseDecrease={handleIncreaseFocus} disabled={session} className={"oi oi-plus"} />
             </div>
           </div>
         </div>
@@ -172,23 +156,9 @@ function Pomodoro() {
               </span>
               <div className="input-group-append">
                 {/* TODO: Implement decreasing break duration and disable during a focus or break session*/}
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-testid="decrease-break"
-                  onClick={handleDecreaseBreak}
-                >
-                  <span className="oi oi-minus" />
-                </button>
+                <IncreaseDecreaseBtn dataTestID={"decrease-break"} handleIncreaseDecrease={handleDecreaseBreak} className={"oi oi-minus"} />
                 {/* TODO: Implement increasing break duration and disable during a focus or break session*/}
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-testid="increase-break"
-                  onClick={handleIncreaseBreak}
-                >
-                  <span className="oi oi-plus" />
-                </button>
+                <IncreaseDecreaseBtn dataTestID={"increase-break"} handleIncreaseDecrease={handleIncreaseBreak} className={"oi oi-plus"} />
               </div>
             </div>
           </div>
