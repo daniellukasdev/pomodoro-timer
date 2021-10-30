@@ -77,7 +77,7 @@ function Pomodoro() {
       }
       return setSession(nextTick);
     },
-    isTimerRunning ? 1000 : null
+    isTimerRunning ?  1000 : null
   );
 
   /**
@@ -123,7 +123,7 @@ function Pomodoro() {
     setBreakDuration(state => state + 1)
   }
 
-  function handleStop(event) {
+  function handleStop() {
     setIsTimerRunning(INITIAL_STATE.isTimerRunning);
     setSession(INITIAL_STATE.session);
   }
