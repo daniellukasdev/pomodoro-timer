@@ -1,6 +1,7 @@
 import React from "react";
 import StopBtn from "./StopBtn"
 import PlayPauseBtn from "./PlayPauseBtn";
+import PropTypes from "prop-types"
 
 export default function TimerControls({ playPause, session, isTimerRunning, handleStop }) {
     return (
@@ -17,4 +18,11 @@ export default function TimerControls({ playPause, session, isTimerRunning, hand
         </div>
       </div>
     );
+}
+
+TimerControls.propTypes = {
+  playPause: PropTypes.func,
+  session: PropTypes.object,
+  isTimerRunning: PropTypes.bool.isRequired,
+  handleStop: PropTypes.func.isRequired,
 }

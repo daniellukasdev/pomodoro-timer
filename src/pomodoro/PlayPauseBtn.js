@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "../utils/class-names";
+import PropTypes from "prop-types"
 
 export default function PlayPauseBtn({ playPause, isTimerRunning }) {
     return (
@@ -21,4 +22,9 @@ export default function PlayPauseBtn({ playPause, isTimerRunning }) {
             </button>
         </>
     )
+}
+
+PlayPauseBtn.propTypes = {
+  playPause: PropTypes.func.isRequired,
+  isTimerRunning: PropTypes.bool.isRequired,
 }

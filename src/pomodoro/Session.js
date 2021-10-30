@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types"
 import { minutesToDuration, secondsToDuration } from "../utils/duration"
 
 export default function Session({ session, currentDuration, isPaused }) {
@@ -42,4 +43,10 @@ export default function Session({ session, currentDuration, isPaused }) {
         </div>
       </div>
     )
+}
+
+Session.propTypes = {
+  session: PropTypes.object, 
+  currentDuration: PropTypes.number.isRequired, 
+  isPaused: PropTypes.bool,
 }
