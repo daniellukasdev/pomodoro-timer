@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types"
 import IncreaseDecreaseBtn from "./IncreaseDecreaseBtn";
 import { minutesToDuration } from "../utils/duration"
 
@@ -59,4 +60,18 @@ export default function Duration({ session, focusDuration, setFocusDuration, bre
             </div>
       </div>
     )
+}
+
+Duration.propTypes = {
+  session: PropTypes.object, 
+  focusDuration: PropTypes.number.isRequired, 
+  setFocusDuration: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.number,
+  ]).isRequired, 
+  breakDuration: PropTypes.number.isRequired, 
+  setBreakDuration: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.number,
+  ]).isRequired,
 }
